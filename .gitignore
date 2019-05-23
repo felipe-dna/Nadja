@@ -1,0 +1,12 @@
+# vscode 
+.vscode/
+
+# database
+db.sqlite3
+migrations
+
+# media
+media/
+
+# cache
+__pycahe__/
