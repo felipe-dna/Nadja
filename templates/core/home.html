@@ -1,0 +1,24 @@
+{% extends '../base/base.html' %}
+{% load static %}
+
+{% comment %} Título do site {% endcomment %}
+{% block page-title %}Nadja | Home{% endblock page-title %}
+
+{% comment %} Classes do body {% endcomment %}
+{% block body-classes %}class="index-page sidebar-collapse"{% endblock body-classes %}
+
+{% comment %} Contúdo do site {% endcomment %}
+{% block content %}
+    <div class="page-header header-filter purple-filter" data-parallax="true" style="background-image: url('{% static 'img/bg2.jpg' %}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <div class="brand text-center">
+                        <h1>Bem vindo ao Nadja</h1>
+                        <h3 class="title text-center">Conte sua história com nossa ajuda</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+{% endblock content %}

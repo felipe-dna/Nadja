@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block body-classes %}class="login-page sidebar-collapse"{% endblock body-classes %}
+
+{% block content %}
+<div class="page-header header-filter purple-filter" style="background-image: url('{% static 'img/bg2.jpg' %}'); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+            {% block form %}{% endblock form %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

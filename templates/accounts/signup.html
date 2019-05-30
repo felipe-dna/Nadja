@@ -1,0 +1,152 @@
+{% extends '../base/base-register.html' %}
+
+{% comment %} Título da página {% endcomment %}
+{% block page-title %}Nadja - Nova Conta{% endblock page-title %}
+
+{% block css %}
+<style>
+    .errorlist {
+        list-style: none;
+    }
+    .errorlist li {
+        font-size: 12px;
+        color: #f44336;
+        text-align: left;
+    }
+
+    #signup-form {
+        top: 20px;
+    }
+</style>
+{% endblock css %}
+
+{% comment %} Formulário {% endcomment %}
+{% block form %}
+<div id="signup-form" class="row mr-auto ml-auto col-md-8" style="min-height: 400px;">
+    <div class="card card-signup">
+
+        <!-- Form -->
+        <form class="form" method="POST" style="height: 100%">
+            {% csrf_token %}
+
+            <!-- Card Header-->
+            <div class="card-header card-header-primary text-center">
+                <h4 class="card-title"><strong>SignUp</strong></h4>
+                <p class="">Insira seus dados abaixo.</p>
+            </div>
+
+            <!-- Card Body-->
+            <div class="card-body">
+
+                <!-- name info -->
+                <div class="row">
+
+                    <!-- first_name -->
+                    <div class="col-md-6">
+                        <span class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="material-icons">person_outline</i></span>
+                                </div>
+                                <input type="text" class="form-control" name="first_name" placeholder="Primeiro nome..." required />
+                            </div>
+                            <div class="form-group">
+                                {% if form.errors.first_name %}{{ form.errors.first_name }}{% endif %}
+                            </div>
+                        </span>
+                    </div>
+
+                    <!-- last_name -->
+                    <div class="col-md-6">
+                        <span class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="material-icons">person_outline</i></span>
+                                </div>
+                                <input type="text" class="form-control" name="last_name" placeholder="Sobrenome..." required />
+                            </div>
+                            <div class="form-group">
+                                {% if form.errors.last_name %}{{ form.errors.last_name }}{% endif %}
+                            </div>
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- login info-->
+                <div class="row">
+
+                    <!-- email -->
+                    <div class="col-md-6">
+                        <span class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="material-icons">mail_outline</i></span>
+                                </div>
+                                <input type="email" class="form-control" name="email" placeholder="Email..." required />
+                            </div>
+                            <div class="form-group">
+                                {% if form.errors.email %}{{ form.errors.email }}{% endif %}
+                            </div>
+                        </span>
+                    </div>
+
+                    <!-- username -->
+                    <div class="col-md-6">
+                        <span class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="material-icons">person_outline</i></span>
+                                </div>
+                                <input type="text" class="form-control" name="username" placeholder="Nome de usuário..." required />
+                            </div>
+                        </span>
+                        <div class="form-group">
+                            {% if form.errors.username %}{{ form.errors.username }}{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- password -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <span class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="material-icons">lock_outline</i></span>
+                                </div>
+                                <input id="id_password1" type="password" class="form-control" name="password1" placeholder="Senha..." required />
+                            </div>
+                        </span>
+                        <div class="form-group">
+                            {% if form.errors.password2 %}{{ form.errors.password2 }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <span class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="material-icons">lock_outline</i></span>
+                                </div>
+                                <input id="id_password2" type="password" class="form-control" name="password2" placeholder="Confirme a senha..." required />
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="box-footer text-center mr-auto ml-auto">
+                <button type="submit" class="btn btn-primary btn-wd btn-lg"><strong>Registrar</strong></button>
+            </div>
+    </form>
+</div> </div>
+
+{% endblock form %}
+
+{% block inline-js %}
+<script>
+    document.querySelector("#signup").classList.add("active");
+</script>
+{% endblock inline-js %}

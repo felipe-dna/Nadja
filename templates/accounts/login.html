@@ -1,0 +1,59 @@
+{% extends '../base/base-register.html' %}
+
+{% comment %} Título da página {% endcomment %}
+{% block page-title %}Nadja - Login{% endblock page-title %}
+
+
+{% comment %} Forumlário {% endcomment %}
+{% block form %}
+<div class="col-lg-4 col-md-6 ml-auto mr-auto">
+    <div class="card card-login">
+        <!-- Form -->
+        <form class="form" method="POST">
+            {% csrf_token %}
+            <div class="card-header card-header-primary text-center">
+                <h4 class="card-title"><strong>Login</strong></h4>
+                <div class="social-line">
+                    {% comment %} TODO: mudar quando implementar oauth2 {% endcomment %}
+                    <a href="#pablo" class="btn btn-just-icon btn-link"><i class="fa fa-facebook-square"></i></a>
+                    <a href="#pablo" class="btn btn-just-icon btn-link"><i class="fa fa-twitter"></i></a>
+                    <a href="#pablo" class="btn btn-just-icon btn-link"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </div>
+            <p class="description text-center">Ou insira seus dados abaixo.</p>
+            <div class="card-body">
+                <span class="bmd-form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="material-icons">person_outline</i></span>
+                        </div>
+                        <input type="text" class="form-control" name="username" placeholder="Nome de usuário ..." required />
+                    </div>
+                </span>
+                <span class="bmd-form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="material-icons">lock_outline</i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="Senha ..." required />
+                    </div>
+                </span>
+                {% if form.errors %}
+                    <br />
+                    <p class="text-danger text-center"><strong>Nome de usuário ou senha incorreta.</strong></p>
+                {% endif %}  
+            </div>
+            <div class="footer text-center">
+                <button type="submit" class="btn btn-primary btn-wd btn-lg"><strong>Logar</strong></button>
+            </div>
+        </form>
+        <!-- ./Form -->
+    </div>
+</div>
+{% endblock form %}
+
+{% block inline-js %}
+<script>
+    document.querySelector("#login").classList.add("active");
+</script>
+{% endblock inline-js %}
