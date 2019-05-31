@@ -19,7 +19,7 @@ class UsersListView(ListView):
 class UsersLoginView(SuccessMessageMixin, LoginView):
     template_name = 'accounts/login.html'
     redirect_authenticated_user = True
-    success_message = "Usuário logado com sucesso"
+    success_message = "Bem vindo!"
 
 
 class UsersLogoutView(LogoutView):
