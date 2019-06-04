@@ -10,3 +10,6 @@ media/
 
 # cache
 */__pycahe__/
+
+#env
+.env
