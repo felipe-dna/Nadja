@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     {% include './head.html' %}
+    
 	{% block css %}{% endblock css %}
+    
     <body {% block body-classes %}{% endblock %} >
         {% include './nav.html' %}
         {% block content %}{% endblock content %}    
@@ -12,4 +14,5 @@
     {% include './footer.html' %}
     {% include './scripts.html' %}
     {% block inline-js %}{% endblock inline-js %}
+
 </html>

@@ -16,13 +16,13 @@ class UsersListView(ListView):
     context_object_name = 'users'
 
 
-class UsersLoginView(SuccessMessageMixin, LoginView):
+class SignInView(SuccessMessageMixin, LoginView):
     template_name = 'accounts/login.html'
     redirect_authenticated_user = True
     success_message = "Bem vindo!"
 
 
-class UsersLogoutView(LogoutView):
+class SignOutView(LogoutView):
     pass
 
 

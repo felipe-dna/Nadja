@@ -19,7 +19,7 @@
                     <li class="nav-item" id="login"><a href="{% url 'accounts:login' %}" class="nav-link"><i class="fa fa-sign-in"></i> <strong>Entrar</strong></a></li>
                     <li class="nav-item" id="signup"><a href="{% url 'accounts:signup' %}" class="nav-link"><i class="material-icons">person_add</i> <strong>Registrar</strong></a></li>
                 {% else %}
-                    
+                    <li class="nav-item"><a href="{% url 'accounts:logout' %}" class="nav-link"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 {% endif %}
             </ul>
         </div>
