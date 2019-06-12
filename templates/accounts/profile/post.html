@@ -1,0 +1,84 @@
+{% extends './base-profile.html' %}
+{% load static %}
+
+{% block profile-content %}
+
+<div class="box box-primary">
+    
+    <div class="box-header ui-sortable-handle">
+        <h3 class="box-title">Nova Lembrança</h3>
+    </div>
+    
+    <form action="{% url 'accounts:post' %}" method="post" encType="multipart/form-data">
+        {% csrf_token %}
+        <div class="box-body">
+
+            <!-- Título no post -->
+            <div class="form-group">
+                <input type="text" class="form-control" name="title" placeholder="Título" required />
+            </div>
+
+            <!-- Data do acontecido-->
+            <div class="form-group">
+                <div class="input-group date" data-provider="datepicker">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" name="date" placeholder="dd/mm/aa" required />
+                </div>
+            </div>
+            
+            {% if form.date.errors %}
+            <div class="form-group">
+                {% for error in form.date.errors %}
+                    <div class="alert alert-danger">
+                        <p>{{ error }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Foto -->
+            <div class="form-group">
+                <div class="form-control img-preview-container hidden">
+                    <img id="image-preview" src="#" alt="" class="rounded" />
+                </div>
+                <input type="file" accept="image/*" name="image" class="form-control" id="img-input" />
+            </div>
+            
+            <!-- Descrição -->
+            <div class="form-group"> 
+                <textarea class="textarea form-control" rows="5" style="resize: none;" name="content" placeholder="Diga algo :3" required></textarea>
+            </div>
+        </div>
+
+        <!-- Botão -->
+        <div class="box-footer clearfix">
+            <input type="submit" class="btn bg-purple put-right" value="Postar" />
+        </div>
+    </form>
+</div>
+{% endblock profile-content %}
+
+{% block inline-js %}
+<script>
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        $('.img-preview-container').removeClass('hidden');
+
+        reader.onload = function(e) {
+            $('#image-preview').attr('src', e.target.result);
+        }
+    
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#img-input").change(function() {
+    readURL(this);
+});
+</script>
+{% endblock inline-js %}

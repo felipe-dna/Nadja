@@ -14,6 +14,12 @@ def get_profile_image_path(instance, filename):
 def get_profile_cover_path(instance, filename):
     path = "users/{}/profile/cover/{}".format(instance.id, filename)
     return path
+
+
+def get_post_file_picture(instance, filename):
+    path = "users/{}/post/{}/image/{}".format(
+        instance.owner.id, instance.id, filename)
+    return path
 # + ------------------------------------------------------------------------- +
 
 
@@ -41,4 +47,25 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'
+# + ------------------------------------------------------------------------- +
+
+
+# + ------------------------------------------------------------------------- +
+class Post(models.Model):
+    id = models.UUIDField(primary_key=True, unique=True,
+                          editable=False, default=uuid.uuid4)
+
+    title = models.CharField(max_length=100)
+    content = models.TextField(max_length=500)
+
+    image = models.ImageField(upload_to=get_post_file_picture, max_length=500)
+
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField()
+
+    def get_absolute_url(self):
+        return reverse("accounts:profile", kwargs={"pk": self.owner_id})
+
+    def __str__(self):
+        return self.title
 # + ------------------------------------------------------------------------- +

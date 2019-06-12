@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    {% include './head.html' %}
+    
+    <body class="hold-transition skin-purple sidebar-mini">
+        <div class="wrapper">
+            {% include './nav.html' %}
+            {% include './aside.html' %}
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                {% block content %}{% endblock content %}
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Versão</b> 1.0.0
+                </div>
+                <strong>Copyright &copy; 2019 <a href="#">felipe-dna.py</a>.</strong>
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+        {% include './scripts.html' %}
+        {% block inline-js %}{% endblock inline-js %}
+    </body>
+</html>

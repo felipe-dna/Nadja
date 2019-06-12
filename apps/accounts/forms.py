@@ -1,7 +1,8 @@
+from datetime import datetime
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import User
+from .models import User, Post
 
 
 class SignupForm(UserCreationForm):
@@ -54,3 +55,17 @@ class SignupForm(UserCreationForm):
             raise forms.ValidationError("Este email já existe.")
 
         return email
+
+
+class PostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('title', 'content', 'image', 'date')
+
+    # def save(self, commit=True):
+    #     form = super(PostForm, self).save(commit=False)
+    #     if commit:
+    #         form.owner = self.kwars
+    #         form.save()
+    #     return form
