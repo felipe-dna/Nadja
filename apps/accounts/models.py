@@ -38,8 +38,11 @@ class User(AbstractUser):
         upload_to=get_profile_cover_path, blank=True, null=True
     )
 
+    couple_name = models.CharField(max_length=200, blank=True, null=True)
+    love_date = models.DateField(blank=True, null=True)
+
     def get_absolute_url(self):
-        return reverse("accounts:list", kwargs={})
+        return reverse("accounts:profile", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.get_full_name()

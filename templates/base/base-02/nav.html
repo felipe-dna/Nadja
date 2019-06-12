@@ -19,7 +19,11 @@
                 <li class="dropdown user user-menu">
                     
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ request.user.profile_image.url }}" class="user-image" alt="User Image">
+                        {% if request.user.profile_image %}
+                            <img src="{{ request.user.profile_image.url }}" class="user-image" alt="User Image">
+                        {% else %}
+                            <img src="{% static 'img/faces/avatar.jpg' %}" class="user-image" alt="">
+                        {% endif %}                    
                         <span class="hidden-xs">{{ request.user.get_full_name }}</span>
                     </a>
                     
@@ -27,7 +31,11 @@
                         
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="{{ request.user.profile_image.url }}" class="img-circle" alt="User Image">
+                            {% if request.user.profile_image %}
+                                <img src="{{ request.user.profile_image.url }}" class="img-circle" alt="User Image">
+                            {% else %}
+                                <img src="{% static 'img/faces/avatar.jpg' %}" class="img-circle" alt="">
+                            {% endif %}
                             <p>{{ request.user.get_full_name }}</p>
                         </li>
                         

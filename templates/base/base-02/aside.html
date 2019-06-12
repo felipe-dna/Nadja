@@ -6,7 +6,11 @@
 
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ request.user.profile_image.url }}" class="img-circle" alt="User Image">
+                {% if request.user.profile_image %}
+                    <img src="{{ request.user.profile_image.url }}" class="img-circle" alt="User Image">
+                {% else %}
+                    <img src="{% static 'img/faces/avatar.jpg' %}" class="img-circle" alt="">
+                {% endif %}
             </div>
 
             <div class="pull-left info">

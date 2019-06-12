@@ -1,4 +1,5 @@
 {% extends '../../base/base-02/base.html' %}
+{% load static %}
 
 {% block page-title %}Perfil | {{ object.get_full_name }}{% endblock page-title %}
 
@@ -33,31 +34,27 @@
                 <div class="box-body box-profile">
 
                     {% comment %} Imagem de perfil {% endcomment %}
-                    <img class="profile-user-img img-responsive img-circle" src="
                     {% if object.profile_image %}
-                        {{ object.profile_image.url }}
+                    <img class="profile-user-img img-responsive img-circle" src="{{ object.profile_image.url }}" />
+                    {% else %}
+                    <img class="profile-user-img img-responsive img-circle" src="{% static 'img/faces/avatar.jpg' %}" />
                     {% endif %}
-                    " alt="User profile picture">
 
                     <h3 class="profile-username text-center">{{ object.get_full_name }}</h3>
 
                     <p class="text-muted text-center">
-                    {% comment %} {% if object.couple %} {% endcomment %}
-                        Curtindo um amor gostoso com Nadja Amorim
-                    {% comment %} {% else %}
-                        Solteiro :( {% endcomment %}
-                    {% comment %} {% endif %} {% endcomment %}
+                        Curtindo um amor gostoso com {{ object.couple_name }}
                     </p>
 
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                            <b>Seguidores</b> <a class="pull-right">1,322</a>
+                            <b>Seguidores</b> <a class="pull-right">THE LOVE HELL YEAH</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Seguindo</b> <a class="pull-right">543</a>
+                            <b>Seguindo</b> <a class="pull-right">O AMOR DA MINHA VIDA</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Amigos</b> <a class="pull-right">13,287</a>
+                            <b>Amigos</b> <a class="pull-right">MUITOS <3</a>
                         </li>
                     </ul>
 
@@ -89,12 +86,12 @@
                 <div class="box-body">
                     
                     <!-- amando há -->
-                    <strong><i class="fa fa-book margin-r-5"></i> Amando há</strong>
-                    <p class="text-muted"> 1 ano e 9 meses </p>
+                    <strong><i class="fa fa-calendar margin-r-5"></i> Amando há</strong>
+                    <p class="text-muted"> {{ object.love_date|timesince }}</p>
                     <hr>
 
                     <!-- amando -->
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Alma gêmea</strong>
+                    <strong><i class="fa fa-heart margin-r-5"></i> Alma gêmea</strong>
                     <p class="text-muted">Nadja Amorim</p>
 
                 </div>
